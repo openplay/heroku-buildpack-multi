@@ -52,9 +52,9 @@ for BUILDPACK in $(cat $1/.buildpacks); do
       echo "DEBUG: env:"
       env
       echo "$dir/bin/compile $1 $2 $3"
-      ls -la $1/.apt/usr/lib/x86_64-linux-gnu
-      ls -la $1/.apt/usr/lib/i386-linux-gnu
-      ls -la $1/.apt/usr/lib
+      ls -la $1/.apt/usr/lib/x86_64-linux-gnu || true
+      ls -la $1/.apt/usr/lib/i386-linux-gnu || true
+      ls -la $1/.apt/usr/lib || true
       $dir/bin/compile $1 $2 $3
 
       if [ $? != 0 ]; then
