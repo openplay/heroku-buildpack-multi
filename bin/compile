@@ -54,7 +54,6 @@ for BUILDPACK in $(cat $1/.buildpacks); do
       echo "$dir/bin/compile $1 $2 $3"
       if [ -e $1/.apt/usr/lib ]; then
         ls -la $1/.apt/usr/lib/x86_64-linux-gnu
-        ls -la $1/.apt/usr/lib/i386-linux-gnu
         ls -la $1/.apt/usr/lib
       fi
       $dir/bin/compile $1 $2 $3
