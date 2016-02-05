@@ -53,10 +53,14 @@ for BUILDPACK in $(cat $1/.buildpacks); do
       env
       echo "$dir/bin/compile $1 $2 $3"
       if [ -e $1/.apt/usr/lib ]; then
-        ls -la $1/.apt/usr/lib/x86_64-linux-gnu
-        ls -la $1/.apt/usr/lib
+        ls -la $1/.apt/usr/lib/x86_64-linux-gnu/
+        ls -la $1/.apt/usr/lib/
       fi
       $dir/bin/compile $1 $2 $3
+
+      if [ -e $1/vendor/bundle/ruby/2.3.0/extensions/x86_64-linux/2.3.0-static/ruby-audio-1.6.1/mkmf.log ]; then
+        cat $1/vendor/bundle/ruby/2.3.0/extensions/x86_64-linux/2.3.0-static/ruby-audio-1.6.1/mkmf.log
+      fi
 
       if [ $? != 0 ]; then
         exit 1
